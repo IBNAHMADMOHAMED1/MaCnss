@@ -4,26 +4,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Login {
-    // number of try to login
+public class LoginAgentCnss {
     private static int tryCount = 0;
-
+    private static boolean isLogin = false;
     public static void login() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter your username: ");
-        String username = scanner.nextLine();
-        System.out.print("Enter your password: ");
-        String password = scanner.nextLine();
+
         if (tryCount < 3) {
             try {
-                ResultSet resultSet = Query.select("select * from users where username = '" + username + "' and password = '" + password + "'");
-                if (resultSet.next()) {
-                    System.out.println("Login successfully");
+                if (Authentification.isAuthentificated("agentcnss")) {
+                    isLogin = true;
+                    System.out.println("Login success");
                 } else {
-
+                    System.out.println("Login failed");
+                    tryCount++;
+                    login();
                 }
             } catch (SQLException e) {
-                System.out.println("Invalid username or password");
+                System.out.println("Login failed");
                 tryCount++;
                 login();
             }
@@ -42,3 +39,4 @@ public class Login {
         }
     }
 }
+
