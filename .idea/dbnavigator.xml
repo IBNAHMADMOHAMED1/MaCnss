@@ -35,7 +35,6 @@
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
       <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/MedicationsList" />
-      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/Patient" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
