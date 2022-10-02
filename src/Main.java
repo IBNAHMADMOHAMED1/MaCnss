@@ -7,15 +7,20 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            ResultSet resultSet = Query.select("select * from users");
-            List<String> users = new ArrayList<>(); // this list to store all users
-            while (resultSet.next()) {
-                users.add(resultSet.getString("username"));
-            }
-            System.out.println(users);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+       int choice = Menu.showHome();
+         switch (choice) {
+              case 1:
+                Login.login();
+                break;
+              case 2:
+               // Register.register();
+                break;
+              case 3:
+                System.exit(0);
+                break;
+              default:
+                System.out.println("Invalid choice");
+                break;
+         }
     }
 }
