@@ -9,9 +9,15 @@ public class Main {
                 }
                 break;
               case 2:
-               // Register.register();
+                 LoginPatient.login();
+                  if (LoginPatient.isLogin()){
+
+                  }
                 break;
-              case 3:
+             case 3:
+
+                break;
+              case 4:
                 System.exit(0);
                 break;
               default:
