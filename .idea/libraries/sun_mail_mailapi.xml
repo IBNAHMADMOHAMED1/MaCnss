@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="sun.mail.mailapi" type="repository">
+    <properties maven-id="com.sun.mail:mailapi:1.6.4" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/mailapi/1.6.4/mailapi-1.6.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/activation/jakarta.activation/1.2.1/jakarta.activation-1.2.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,20 @@
+<component name="libraryTable">
+  <library name="apache.camel.mail" type="repository">
+    <properties maven-id="org.apache.camel:camel-mail:3.18.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/camel/camel-mail/3.18.1/camel-mail-3.18.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/camel/camel-support/3.18.1/camel-support-3.18.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/camel/camel-api/3.18.1/camel-api-3.18.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/xml/bind/jakarta.xml.bind-api/2.3.3/jakarta.xml.bind-api-2.3.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/jakarta/activation/jakarta.activation-api/1.2.2/jakarta.activation-api-1.2.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/camel/camel-management-api/3.18.1/camel-management-api-3.18.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/camel/camel-util/3.18.1/camel-util-3.18.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/camel/camel-attachments/3.18.1/camel-attachments-3.18.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/activation/javax.activation/1.2.0/javax.activation-1.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/jakarta.mail/1.6.7/jakarta.mail-1.6.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
