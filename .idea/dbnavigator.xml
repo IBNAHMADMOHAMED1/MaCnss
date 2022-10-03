@@ -35,11 +35,13 @@
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="29cade19-e0dc-48fd-8d6a-ec5d708b636c">
-      <console name="Connection 1" type="STANDARD" schema="macnss" session="Main" />
+      <console name="Connection 1" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/AgentCnss" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" />
@@ -75,6 +77,9 @@
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
+  </component>
+  <component name="DBNavigator.Project.FileConnectionMappingManager">
+    <mapping file-url="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.sql" connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" session-id="MAIN" current-schema="MaCnss" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />

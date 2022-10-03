@@ -4,7 +4,7 @@ public class Main {
         switch (choice) {
             case 1:
                 LoginAgentCnss.login();
-                if (LoginAgentCnss.isLogin()) {
+                if (LoginAgentCnss.isLogin) {
                     System.out.println("Welcome to the system");
                 }
                 break;
