@@ -1,14 +1,18 @@
+import com.mysql.cj.Session;
 import databaes.Query;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Properties;
 import java.util.Scanner;
 
 
 public class LoginAgentCnss {
     private static int tryCount = 0;
     private final static String TABLE = "AgentCnss";
-    private static boolean isLogin = false;
+    public static boolean isLogin = false;
     public static void login() {
 
         if (tryCount < 3) {
@@ -16,10 +20,34 @@ public class LoginAgentCnss {
                 Boolean resultSet = Authentification.isAuthentificated(TABLE);
 
                 if (Authentification.islogin) {
-                   // String Email = Authentification.getInformation(resultSet,"Email");
+                   //String Email = Authentification.getInformation(resultSet,"Email");
                     System.out.println("Welcome to the system");
                     System.out.println("Your Email is: "+Authentification.Email);
-                    isLogin = true;
+                    String code = generateCode();
+                    System.out.println("Check your email for the code You have 5 minutes to enter the code");
+                    if (Mail.sendMail(code,Authentification.Email)) {
+                        Boolean isCodeValid = verifyCode(code);
+                        Boolean isNotExpired = checkCodeExpiration(LocalTime.now());
+                        if (isNotExpired) {
+                            if (isCodeValid) {
+                                System.out.println("You are logged in");
+                                isLogin = true;
+                            } else System.out.println("Invalid code");
+                        }
+                        else {
+                            System.out.println("Code expired");
+                            System.out.println("Do you want to resend the code? (y/n)");
+                            Scanner scanner = new Scanner(System.in);
+                            String choice = scanner.nextLine();
+                            if (choice.equals("y")) login();
+                            else {
+                                System.out.println("Goodbye");
+                                System.exit(0);
+                            }
+                        }
+
+                    } else System.out.println("Error sending email");
+
                 } else {
                     System.out.println("Login failed");
                     tryCount++;
@@ -30,7 +58,6 @@ public class LoginAgentCnss {
             }
         } else {
             System.out.println("You have exceeded the number of attempts");
-            // after 30 seconds the user can try to login again
             try {
                 System.out.println("Wait 30 seconds");
                 Thread.sleep(30000);
@@ -42,8 +69,35 @@ public class LoginAgentCnss {
 
         }
     }
-    public static boolean isLogin() {
-        return isLogin;
+
+    // generate random code to send it to the user email to verify his account and expire after 10 minutes
+    public static String generateCode() {
+        String code = "";
+        for (int i = 0; i < 6; i++) {
+            code += (int) (Math.random() * 10);
+        }
+        return code;
+    }
+
+
+    public static boolean verifyCode(String code) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the code: ");
+        String codeInput = scanner.nextLine();
+        //Boolean isNotExpired = checkCodeExpiration(
+        if (codeInput.equals(code)) {
+            return true;
+        }
+        return false;
+    }
+
+    // check if the code is expired or not
+    public static boolean checkCodeExpiration(LocalTime date) {
+        LocalTime now = LocalTime.now();
+        if (now.isBefore(date.plusMinutes(1/2))) {
+            return true;
+        }
+        return false;
     }
 
 
