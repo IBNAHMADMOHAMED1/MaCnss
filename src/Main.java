@@ -4,6 +4,9 @@ public class Main {
          switch (choice) {
               case 1:
                 LoginAgentCnss.login();
+                if (LoginAgentCnss.isLogin()) {
+                    System.out.println("Welcome to the system");
+                }
                 break;
               case 2:
                // Register.register();

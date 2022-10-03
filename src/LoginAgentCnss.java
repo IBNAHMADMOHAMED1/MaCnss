@@ -4,16 +4,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+
 public class LoginAgentCnss {
     private static int tryCount = 0;
+    private final static String TABLE = "AgentCnss";
     private static boolean isLogin = false;
     public static void login() {
 
         if (tryCount < 3) {
             try {
-                if (Authentification.isAuthentificated("agentcnss")) {
+                if (Authentification.isAuthentificated(TABLE).next()) {
+                    String Email = Authentification.getInformation(Authentification.isAuthentificated(TABLE),"Email");
+                    System.out.println("Welcome to the system");
+                    System.out.println("Your Email is: "+Email);
                     isLogin = true;
-                    System.out.println("Login success");
                 } else {
                     System.out.println("Login failed");
                     tryCount++;
@@ -38,5 +42,10 @@ public class LoginAgentCnss {
 
         }
     }
+    public static boolean isLogin() {
+        return isLogin;
+    }
+
+
 }
 
