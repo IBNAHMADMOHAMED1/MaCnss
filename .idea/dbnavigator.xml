@@ -33,7 +33,9 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/AgentCnss" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" />
@@ -49,6 +51,7 @@
         <condition column="PatientID" operator="=" value="1" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.AgentCnss" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="student.student" active-filter-id="0937f7b5-ef20-463e-82a6-933859238410">
       <filter id="0937f7b5-ef20-463e-82a6-933859238410" name="mohamed" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="firstname" operator="like" value="mohamed" active="true" />

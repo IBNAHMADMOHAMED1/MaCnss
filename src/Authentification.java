@@ -6,18 +6,27 @@ import java.util.Scanner;
 
 public class Authentification {
 
-    private Scanner scanner;
-    public static ResultSet isAuthentificated(String table) throws SQLException {
+    public static String Email;
+    public static Boolean islogin = false;
+    public static Boolean isAuthentificated(String table) throws SQLException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your Matricule Number: ");
         String matriculeNumber = scanner.nextLine();
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
-        ResultSet resultSet = Query.select("select * from "+table+" where "+ table + "MatricNo = "+matriculeNumber+"' and password = '"+password+"'");
-        return resultSet;
+
+        ResultSet resultSet = Query.select("select * from "+table+" where "+ table + "MatricNo = '"+matriculeNumber+"' and "+table+"Password = '"+password+"'");
+
+        if (resultSet.next()) {
+            Email = resultSet.getString(table+"Email");
+            islogin = true;
+        }
+       // System.out.println("select * from "+table+" where "+ table + "MatricNo = '"+matriculeNumber+"' and "+table+"Password = '"+password+"'");
+        return islogin;
     }
 
     public static String getInformation(ResultSet resultSet,String choice) throws SQLException {
         return resultSet.getString(choice);
     }
+
 }

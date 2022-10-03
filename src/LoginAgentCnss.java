@@ -13,10 +13,12 @@ public class LoginAgentCnss {
 
         if (tryCount < 3) {
             try {
-                if (Authentification.isAuthentificated(TABLE).next()) {
-                    String Email = Authentification.getInformation(Authentification.isAuthentificated(TABLE),"Email");
+                Boolean resultSet = Authentification.isAuthentificated(TABLE);
+
+                if (Authentification.islogin) {
+                   // String Email = Authentification.getInformation(resultSet,"Email");
                     System.out.println("Welcome to the system");
-                    System.out.println("Your Email is: "+Email);
+                    System.out.println("Your Email is: "+Authentification.Email);
                     isLogin = true;
                 } else {
                     System.out.println("Login failed");
@@ -24,9 +26,7 @@ public class LoginAgentCnss {
                     login();
                 }
             } catch (SQLException e) {
-                System.out.println("Login failed");
-                tryCount++;
-                login();
+             // e.printStackTrace();
             }
         } else {
             System.out.println("You have exceeded the number of attempts");
@@ -45,6 +45,8 @@ public class LoginAgentCnss {
     public static boolean isLogin() {
         return isLogin;
     }
+
+
 
 
 }
