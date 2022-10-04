@@ -1,6 +1,7 @@
 import databaes.Query;
 import document.*;
 
+import java.sql.ResultSet;
 import java.util.*;
 
 public class Folder {
@@ -189,5 +190,101 @@ public class Folder {
             return false;
         }
 
+    }
+
+    public static String checkFolderExist(String folderCode,String choice)
+    {
+        String query = "select * from FolderPatient where FolderNumber = '" + folderCode + "'";
+        Boolean isExist;
+        try {
+            ResultSet resultSet = Query.select(query);
+            isExist = resultSet.next();
+            if (isExist) {
+                System.out.println("Folder found");
+                return resultSet.getString(choice);
+            } else {
+                System.out.println("Folder code not exist");
+                return "";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
+    private static Boolean validate(String query)
+    {
+        try {
+            ResultSet resultSet = Query.select(query);
+            if (resultSet.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static void validateFolder()
+    {
+        String folderCode = getFolderCode();
+        String status = checkFolderExist(folderCode,"FolderStatus");
+        if (!status.isEmpty()) {
+            System.out.println("Folder status: " + status);
+            // ask the if want update the status
+            System.out.println("Do you want to update the status? (y/n)");
+            Scanner scanner = new Scanner(System.in);
+            String choice = scanner.nextLine();
+            if (choice.equals("y")) {
+
+                String newStatusString = getNewStatus();
+                String query = "update FolderPatient set FolderStatus = '" + newStatusString + "' where FolderNumber = '" + folderCode + "'";
+                Boolean isUpdated = update(query);
+                if (isUpdated) {
+                    System.out.println("Folder status updated successfully");
+                } else {
+                    System.out.println("Folder status not updated");
+                }
+            } else {
+                System.out.println("Folder status not updated");
+            }
+        } else {
+            System.out.println("Folder not found");
+            validateFolder();
+        }
+
+    }
+    public static String getNewStatus() {
+        String newStatus = "";
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the new status: ");
+        System.out.println("1. En cours");
+        System.out.println("2. Non remboursé");
+        System.out.println("3. Reimbursed");
+        int choice = scanner.nextInt();
+        switch (choice) {
+            case 1:
+                newStatus = "En cours";
+                break;
+            case 2:
+                newStatus = "Non remboursé";
+                break;
+            case 3:
+                newStatus = "Reimbursed";
+                break;
+        }
+        return newStatus;
+    }
+
+    public static Boolean update(String query)
+    {
+        try {
+            Query.update(query);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
