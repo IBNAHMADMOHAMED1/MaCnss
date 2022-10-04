@@ -37,6 +37,7 @@ public class Main {
                 break;
             case 2:
                 System.out.println("Validate a Folder Patient");
+                Folder.validateFolder();
                 break;
             case 3:
                 System.out.println("Search a Folder Patient");
