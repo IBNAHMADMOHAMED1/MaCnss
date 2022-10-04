@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class LoginAgentCnss {
     private static int tryCount = 0;
+    private static int tryCountVerifyCode = 0;
     private final static String TABLE = "AgentCnss";
     public static boolean isLogin = false;
     public static void login() {
@@ -25,14 +26,27 @@ public class LoginAgentCnss {
                     System.out.println("Your Email is: "+Authentification.Email);
                     String code = generateCode();
                     System.out.println("Check your email for the code You have 5 minutes to enter the code");
-                    if (Mail.sendMail(code,Authentification.Email)) {
+                    if (Mail.sendMail(code,"ibnahmadmohamed8@gmail.com")) {
                         Boolean isCodeValid = verifyCode(code);
                         Boolean isNotExpired = checkCodeExpiration(LocalTime.now());
                         if (isNotExpired) {
-                            if (isCodeValid) {
-                                System.out.println("You are logged in");
-                                isLogin = true;
-                            } else System.out.println("Invalid code");
+                            // verify if the code is valid , 3 try max
+
+                            while (tryCountVerifyCode < 2) {
+                                if (isCodeValid) {
+                                    System.out.println("Code is valid");
+                                    isLogin = true;
+                                    break;
+                                } else {
+                                    System.out.println("Code is not valid");
+                                    tryCountVerifyCode++;
+                                    isCodeValid = verifyCode(code);
+                                }
+                            }
+                            if (tryCountVerifyCode == 2) {
+                                wait30Seconds();
+                            }
+
                         }
                         else {
                             System.out.println("Code expired");
@@ -58,14 +72,7 @@ public class LoginAgentCnss {
             }
         } else {
             System.out.println("You have exceeded the number of attempts");
-            try {
-                System.out.println("Wait 30 seconds");
-                Thread.sleep(30000);
-                tryCount = 0;
-                login();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait30Seconds();
 
         }
     }
@@ -98,6 +105,18 @@ public class LoginAgentCnss {
             return true;
         }
         return false;
+    }
+
+    public static void wait30Seconds(){
+        try {
+            System.out.println("Wait 30 seconds");
+            Thread.sleep(30000);
+            tryCount = 0;
+            tryCountVerifyCode = 0;
+            login();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
