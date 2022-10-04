@@ -40,7 +40,9 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
+      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/Patient" />
       <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/AgentCnss" />
+      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/FolderPatient" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -54,6 +56,7 @@
         <condition column="id" operator="=" value="1" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.FolderPatient" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.Patient" active-filter-id="ca34bef9-84b9-46dd-8934-71fcf58103eb">
       <filter id="ca34bef9-84b9-46dd-8934-71fcf58103eb" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="PatientID" operator="=" value="1" active="true" />

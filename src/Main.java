@@ -33,6 +33,7 @@ public class Main {
         switch (choice) {
             case 1:
                 System.out.println("Add a new Folder Patient");
+                Folder.addNewFolder();
                 break;
             case 2:
                 System.out.println("Validate a Folder Patient");
