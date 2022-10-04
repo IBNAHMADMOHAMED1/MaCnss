@@ -119,6 +119,10 @@ public class LoginAgentCnss {
         }
     }
 
+    public static void logout(){
+        isLogin = false;
+    }
+
 
 
 
