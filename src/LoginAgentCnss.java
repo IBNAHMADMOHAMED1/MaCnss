@@ -94,7 +94,7 @@ public class LoginAgentCnss {
     // check if the code is expired or not
     public static boolean checkCodeExpiration(LocalTime date) {
         LocalTime now = LocalTime.now();
-        if (now.isBefore(date.plusMinutes(1/2))) {
+        if (now.isBefore(date.plusMinutes(5))) {
             return true;
         }
         return false;
