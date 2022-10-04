@@ -6,6 +6,7 @@ public class Main {
                 LoginAgentCnss.login();
                 if (LoginAgentCnss.isLogin) {
                     System.out.println("Welcome to the system");
+                    Menu.showMenuAgentCnss();
                 }
                 break;
             case 2:
