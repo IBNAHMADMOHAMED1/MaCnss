@@ -6,7 +6,7 @@ public class Main {
                 LoginAgentCnss.login();
                 if (LoginAgentCnss.isLogin) {
                     System.out.println("Welcome to the system");
-                    Menu.showMenuAgentCnss();
+                    caseAgentCnss(Menu.showMenuAgentCnss());
                 }
                 break;
             case 2:
@@ -20,6 +20,28 @@ public class Main {
                 break;
             case 4:
                 System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+    }
+    
+    // method to case agent cnss
+    public static void caseAgentCnss(int choice){
+
+        switch (choice) {
+            case 1:
+                System.out.println("Add a new Folder Patient");
+                break;
+            case 2:
+                System.out.println("Validate a Folder Patient");
+                break;
+            case 3:
+                System.out.println("Search a Folder Patient");
+                break;
+            case 4:
+                System.out.println("Logout");
                 break;
             default:
                 System.out.println("Invalid choice");
