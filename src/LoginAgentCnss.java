@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class LoginAgentCnss {
     private static int tryCount = 0;
     private final static String TABLE = "AgentCnss";
-    private static boolean isLogin = false;
+    public static boolean isLogin = false;
     public static void login() {
 
         if (tryCount < 3) {
@@ -41,9 +41,6 @@ public class LoginAgentCnss {
             }
 
         }
-    }
-    public static boolean isLogin() {
-        return isLogin;
     }
 
 

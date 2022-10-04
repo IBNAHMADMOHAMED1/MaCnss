@@ -3,7 +3,7 @@ import java.sql.SQLException;
 public class LoginPatient {
     private static int tryCount = 0;
     private final static String TABLE = "Patient";
-    private static boolean isLogin = false;
+    public static boolean isLogin = false;
 
     public static void login(){
 
@@ -38,8 +38,6 @@ public class LoginPatient {
        }
     }
 
-    public static boolean isLogin(){
-        return isLogin;
-    }
+
 
 }
