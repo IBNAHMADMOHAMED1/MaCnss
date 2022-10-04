@@ -6,8 +6,8 @@ import java.util.Properties;
 public class Mail {
     final static String IMG = "<img src=\"https://www.mapcasablanca.ma/map/uploads/2021/06/CNSS-3.jpg\" alt=\"logo\" width=\"100\" height=\"100\">";
     public static Boolean sendMail(String code, String email) {
-        final String username = "ibnahmadmohamed8@gmail.com"; //
-        final String password = "rtmouzprbcfllqgh";
+        final String username = "medandhala@gmail.com"; //
+        final String password = "gzhthpkhuxcustdd";
         Properties properties = System.getProperties();
         properties.put("mail.smtp.auth", true);
         properties.put("mail.smtp.host","smtp.gmail.com");
@@ -24,7 +24,7 @@ public class Mail {
         try {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("elhaoudihaytham2001@gmail.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Verification code MaCnss");
             message.setText("Your code is: "+code + "\n This code is valid for 5 minutes \n ");
             Transport.send(message);
