@@ -12,5 +12,17 @@ public class Menu {
         int choice = scanner.nextInt();
         return choice;
     }
+    public static int showMenuAgentCnss()
+    {
+        System.out.println("*** Welcome to the Dashboard *** \n");
+        System.out.println("1- Add a new Folder Patient");
+        System.out.println("2- Validate a Folder Patient");
+        System.out.println("3- Search a Folder Patient");
+        System.out.println("4- Logout");
+        System.out.print("Enter your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        return choice;
+    }
 
 }
