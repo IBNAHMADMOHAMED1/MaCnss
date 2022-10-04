@@ -20,5 +20,14 @@ public class Query extends DbConncetion{
         return getStatement().executeQuery(query);
     }
 
+    public static Boolean isExist(String query) throws SQLException {
+        ResultSet resultSet = select(query);
+        if (resultSet.next()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }
