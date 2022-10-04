@@ -1,2 +1,5 @@
-package document;public class Medicament {
+package document;
+
+public class Medicament {
+
 }
