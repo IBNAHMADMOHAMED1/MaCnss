@@ -2,6 +2,7 @@ import databaes.Query;
 import document.*;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
 
 public class Folder {
@@ -168,6 +169,7 @@ public class Folder {
         return typeOfArrangement;
     }
 
+
     public static void wait30Seconds() {
         try {
             System.out.println("Wait 30 seconds");
@@ -316,4 +318,29 @@ public class Folder {
 
     //totalAmountOfMedicaments
 
+    //Patient Ops
+
+    public static void DislayPatientFolders(int ID) throws SQLException {
+        String query ="SELECT * FROM FolderPatient WHERE PatientID =  "+ID;
+        ResultSet resultSet = Query.select(query);
+
+        while (resultSet.next()){
+            DisplayData(resultSet);
+        }
+    }
+
+    public static void DisplaySingleFolder(int ID) throws SQLException {
+        String FolderID = getFolderCode();
+        String query ="SELECT * FROM FolderPatient WHERE PatientID =  "+ID+" AND FolderNumber = '"+FolderID+"'";
+        ResultSet resultSet = Query.select(query);
+        if(resultSet.next()) DisplayData(resultSet);
+        else System.out.println("Folder not found");
+
+    }
+
+    private static void DisplayData(ResultSet resultSet) throws SQLException {
+        System.out.println(resultSet.getString("FolderNumber"));
+        System.out.println(resultSet.getString("CreatedAt"));
+        System.out.println(resultSet.getString("FolderStatus"));
+    }
 }

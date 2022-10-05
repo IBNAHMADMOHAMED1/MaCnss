@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Authentification {
 
     public static String Email;
+    public static int PatientID;
     public static Boolean islogin = false;
     public static Boolean isAuthentificated(String table) throws SQLException {
         Scanner scanner = new Scanner(System.in);
@@ -19,6 +20,7 @@ public class Authentification {
 
         if (resultSet.next()) {
             Email = resultSet.getString(table+"Email");
+            PatientID = resultSet.getInt(table+"ID");
             islogin = true;
         }
        // System.out.println("select * from "+table+" where "+ table + "MatricNo = '"+matriculeNumber+"' and "+table+"Password = '"+password+"'");

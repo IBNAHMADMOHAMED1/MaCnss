@@ -24,5 +24,16 @@ public class Menu {
         int choice = scanner.nextInt();
         return choice;
     }
+    public static int showMenuPatient()
+    {
+        System.out.println("*** Welcome to the Dashboard *** \n");
+        System.out.println("1- Check All Folders");
+        System.out.println("2- Check specific folder");
+        System.out.println("3- Logout");
+        System.out.print("Enter your choice: ");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        return choice;
+    }
 
 }
