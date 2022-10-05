@@ -30,4 +30,19 @@ public class Patient {
             return 0;
         }
     }
+
+    // getPatientByField
+    public static String getPatientByField(String patientMatricNo,String field){
+        try {
+            ResultSet resultSet = Query.select("SELECT "+field+" FROM Patient WHERE PatientMatricNo = '"+patientMatricNo+"'");
+            if (resultSet.next()) {
+                return resultSet.getString(field);
+            } else {
+                return "";
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
 }
