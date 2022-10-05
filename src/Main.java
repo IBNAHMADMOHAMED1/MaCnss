@@ -1,9 +1,11 @@
+import java.sql.SQLException;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         baseMenu();
     }
 
-    private static void baseMenu() {
+    private static void baseMenu() throws SQLException {
         int choice = Menu.showHome();
         switch (choice) {
             case 1:
@@ -16,7 +18,8 @@ public class Main {
             case 2:
                 LoginPatient.login();
                 if (LoginPatient.isLogin()){
-
+                   System.out.println("Welcome to the system");
+                   casePatient(Menu.showMenuPatient());
                 }
                 break;
             case 3:
@@ -32,7 +35,7 @@ public class Main {
     }
 
     // method to case agent cnss
-    public static void caseAgentCnss(int choice){
+    public static void caseAgentCnss(int choice) throws SQLException {
 
         switch (choice) {
             case 1:
@@ -54,6 +57,30 @@ public class Main {
                 LoginAgentCnss.logout();
                 baseMenu();
                 break;
+            default:
+                System.out.println("Invalid choice");
+                break;
+        }
+    }
+
+    public static void casePatient(int choice) throws SQLException {
+
+        switch (choice) {
+            case 1:
+                System.out.println("Displaying all folders :");
+                Folder.DislayPatientFolders(Authentification.PatientID);
+                casePatient(Menu.showMenuPatient());
+                break;
+            case 2:
+                System.out.println("Specific folder");
+                Folder.DisplaySingleFolder(Authentification.PatientID);
+                caseAgentCnss(Menu.showMenuAgentCnss());
+                break;
+            case 3:
+                System.out.println("Logging out");
+
+                break;
+
             default:
                 System.out.println("Invalid choice");
                 break;

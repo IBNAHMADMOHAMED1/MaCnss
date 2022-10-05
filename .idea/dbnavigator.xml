@@ -40,8 +40,8 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/Patient" />
-      <object connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" object-ref="schemas/MaCnss/tables/AgentCnss" />
+      <object connection-id="29cade19-e0dc-48fd-8d6a-ec5d708b636c" object-ref="schemas/macnss/tables/folderpatient" />
+      <object connection-id="29cade19-e0dc-48fd-8d6a-ec5d708b636c" object-ref="schemas/macnss/tables/patient" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
@@ -55,23 +55,24 @@
         <condition column="id" operator="=" value="1" active="true" />
       </filter>
     </filter-actions>
-    <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.FolderPatient" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.Patient" active-filter-id="ca34bef9-84b9-46dd-8934-71fcf58103eb">
       <filter id="ca34bef9-84b9-46dd-8934-71fcf58103eb" name="1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="PatientID" operator="=" value="1" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.FolderPatient" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="MaCnss.AgentCnss" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" dataset="student.student" active-filter-id="0937f7b5-ef20-463e-82a6-933859238410">
       <filter id="0937f7b5-ef20-463e-82a6-933859238410" name="mohamed" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="firstname" operator="like" value="mohamed" active="true" />
       </filter>
     </filter-actions>
-    <filter-actions connection-id="29cade19-e0dc-48fd-8d6a-ec5d708b636c" dataset="macnss.patient" active-filter-id="6b59e6ad-a0c0-4eaa-b844-33fcde5b834f">
+    <filter-actions connection-id="29cade19-e0dc-48fd-8d6a-ec5d708b636c" dataset="macnss.patient" active-filter-id="">
       <filter id="6b59e6ad-a0c0-4eaa-b844-33fcde5b834f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="PatientID" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
+    <filter-actions connection-id="29cade19-e0dc-48fd-8d6a-ec5d708b636c" dataset="macnss.folderpatient" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="29cade19-e0dc-48fd-8d6a-ec5d708b636c" dataset="macnss.agentcnss" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
@@ -79,9 +80,6 @@
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
-  </component>
-  <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.sql" connection-id="c4e5afb8-c887-4f3d-9a94-39b342a5b8a3" session-id="MAIN" current-schema="MaCnss" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
