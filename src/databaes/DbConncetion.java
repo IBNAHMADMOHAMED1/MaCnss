@@ -3,9 +3,9 @@ import java.sql.*;
 
 public class DbConncetion {
 
-    private  static final String databaseName = "MaCnss";
+    private  static final String databaseName = "macnss";
     private static final String user = "root";
-    private static final String password = "123456";
+    private static final String password = "";
 
     // this method to connect to database and return connection
     public static Connection getConnection() throws SQLException {
