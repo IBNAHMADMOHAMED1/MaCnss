@@ -271,6 +271,13 @@ public class Folder {
                 Boolean isUpdated = update(query);
                 if (isUpdated) {
                     System.out.println("Folder status updated successfully");
+                    // ask to notify the patient
+                    System.out.println("Do you want to notify the patient? (y/n)");
+                    String choice2 = scanner.nextLine();
+                    if (choice2.equals("y")) {
+                        notifyPatient(folderCode, newStatusString);
+                    }
+
                 } else {
                     System.out.println("Folder status not updated");
                 }
@@ -283,6 +290,20 @@ public class Folder {
         }
 
     }
+
+    private static void notifyPatient(String folderCode, String newStatusString) {
+        String patientMatricNo = checkFolderExist(folderCode,"PatientMatricNo");
+        String patientEmail = Patient.getPatientByField(patientMatricNo,"PatientEmail");
+        if (!patientEmail.isEmpty()) {
+            String subject = "Folder status updated";
+            String message = "Your folder status has been updated to " + newStatusString;
+            Mail.sendMail(patientEmail,subject,message);
+            System.out.println("Email sent successfully");
+        } else {
+            System.out.println("Patient email not found");
+        }
+    }
+
     public static String getNewStatus() {
         String newStatus = "";
         Scanner scanner = new Scanner(System.in);
