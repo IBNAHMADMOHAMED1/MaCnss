@@ -47,30 +47,56 @@ public class Folder {
             totalAmountReimbursed = totalAmountOfFolder - priceOfArrangement;
             System.out.println("Total Amount Reimbursed: " + totalAmountReimbursed + " DH");
             // ask if the user wants to add medicaments
+            String query =  "insert into FolderPatient (FolderNumber,PatientId,TypeOfArrangement,TotalAmount,TotalAmountReimbursement) values ('" + folderCode + "'," + patientId + ",'" + typeOfArrangement + "'," + totalAmountOfFolder + "," + totalAmountReimbursed + ")";
+            Boolean isInserted = Folder.save(query);
+            if (isInserted)
+                System.out.println("Folder added successfully");
+            else
+                System.out.println("Folder not added");
             System.out.println("Do you want to add medicaments? (y/n)");
             Scanner scanner = new Scanner(System.in);
             String answer = scanner.nextLine();
             if (answer.equals("n")) {
                 // ask to save the folder
+                System.out.println("hhhhhhhhhhhhhhhhhhhhhhhhh");
+
+
+            }
+            if (answer.equals("y")) {
+                // add medicaments
+                System.out.println("How many medicaments do you want to add?");
+                int numberOfMedicaments = scanner.nextInt();
+                Double totalAmountOfMedicaments = 0.0;
+                Double totalAmountOfMedicamentsReimbursed = 0.0;
+                    while (numberOfMedicaments > 0) {
+                        System.out.println("Enter the medicament code");
+                        String medicamentCode = scanner.next();
+                        System.out.println("Medicament code: " + medicamentCode);
+                        Medicament medicament = new Medicament();
+                        Double medicamentPrice = medicament.getMedicamentByField(medicamentCode, "medicament_price");
+                        System.out.println("Medicament Price: " + medicamentPrice);
+                        Double medicamentRate = medicament.getMedicamentByField(medicamentCode, "medicament_rate");
+                        medicament.addMedicament(folderCode, medicamentCode);
+                        totalAmountOfMedicaments += medicamentPrice;
+                        totalAmountOfMedicamentsReimbursed += medicamentPrice * (medicamentRate / 100);
+
+                        numberOfMedicaments--;
+                    }
+
+
+                System.out.println("Total 1: " + totalAmountOfMedicaments );
+                System.out.println("Total 2: " + totalAmountOfMedicamentsReimbursed );
                 System.out.println("Do you want to save the folder? (y/n)");
                 String answerSave = scanner.nextLine();
                 if (answerSave.equals("y")) {
-                    String query =  "insert into FolderPatient (FolderNumber,PatientId,TypeOfArrangement,TotalAmount,TotalAmountReimbursement) values ('" + folderCode + "'," + patientId + ",'" + typeOfArrangement + "'," + totalAmountOfFolder + "," + totalAmountReimbursed + ")";
-                    Boolean isInserted = Folder.save(query);
-                    if (isInserted) {
+                    String query2 =  "insert into FolderPatient (FolderNumber,PatientId,TypeOfArrangement,TotalAmount,TotalAmountReimbursement) values ('" + folderCode + "'," + patientId + ",'" + typeOfArrangement + "'," + totalAmountOfFolder + "," + totalAmountReimbursed + ")";
+                    Boolean isInsertedTow = Folder.save(query2);
+                    if (isInsertedTow)
                         System.out.println("Folder added successfully");
-                        System.out.println("Folder Code: " + folderCode);
-                        System.out.println("Type of arrangement: " + typeOfArrangement);
-                        System.out.println("Total amount of folder: " + totalAmountOfFolder);
-                        System.out.println("Total amount reimbursed: " + totalAmountReimbursed);
-                        System.out.println("Total amount arrangement: " + totalAmountArrangement);
-                        System.out.println("Price of arrangement: " + priceOfArrangement);
-                    } else {
+                    else
                         System.out.println("Folder not added");
-                    }
-                } else {
+                } else
                     System.out.println("Folder not saved");
-                }
             }
 
             //folder.addMedicament();
@@ -287,4 +313,7 @@ public class Folder {
             return false;
         }
     }
+
+    //totalAmountOfMedicaments
+
 }

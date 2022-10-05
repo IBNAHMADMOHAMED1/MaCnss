@@ -17,7 +17,6 @@ public class Patient {
             return false;
         }
     }
-    // get id of patient by matricNo
     public static int getPatientId(String patientMatricNo) {
         try {
             ResultSet resultSet = Query.select("select * from Patient where PatientMatricNo = '"+patientMatricNo+"'");
