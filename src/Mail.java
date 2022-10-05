@@ -5,7 +5,7 @@ import java.util.Properties;
 
 public class Mail {
     final static String IMG = "<img src=\"https://www.mapcasablanca.ma/map/uploads/2021/06/CNSS-3.jpg\" alt=\"logo\" width=\"100\" height=\"100\">";
-    public static Boolean sendMail(String code, String email) {
+    public static Boolean sendMail(String body, String email) {
         final String username = "medandhala@gmail.com"; //
         final String password = "gzhthpkhuxcustdd";
         Properties properties = System.getProperties();
@@ -26,7 +26,7 @@ public class Mail {
             message.setFrom(new InternetAddress(username));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             message.setSubject("Verification code MaCnss");
-            message.setText("Your code is: "+code + "\n This code is valid for 5 minutes \n ");
+            message.setText(body);
             Transport.send(message);
             return true;
         } catch (MessagingException e) {

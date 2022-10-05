@@ -25,8 +25,9 @@ public class LoginAgentCnss {
                     System.out.println("Welcome to the system");
                     System.out.println("Your Email is: "+Authentification.Email);
                     String code = generateCode();
+                    String message = "Your code is: "+code;
                     System.out.println("Check your email for the code You have 5 minutes to enter the code");
-                    if (Mail.sendMail(code,"ibnahmadmohamed8@gmail.com")) {
+                    if (Mail.sendMail(message,"ibnahmadmohamed8@gmail.com")) {
                         Boolean isCodeValid = verifyCode(code);
                         Boolean isNotExpired = checkCodeExpiration(LocalTime.now());
                         if (isNotExpired) {
