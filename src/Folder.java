@@ -84,20 +84,15 @@ public class Folder {
                         numberOfMedicaments--;
                     }
 
+                totalAmountReimbursed +=  totalAmountOfMedicamentsReimbursed;
+               // update
+                String queryUpdate = "update FolderPatient set TotalAmountReimbursement = " + totalAmountReimbursed + " where FolderNumber = '" + folderCode + "'";
+                Boolean isUpdated = Folder.update(queryUpdate);
+                if (isUpdated)
+                    System.out.println("Folder updated successfully");
+                else
+                    System.out.println("Folder not updated");
 
-                System.out.println("Total 1: " + totalAmountOfMedicaments );
-                System.out.println("Total 2: " + totalAmountOfMedicamentsReimbursed );
-                System.out.println("Do you want to save the folder? (y/n)");
-                String answerSave = scanner.nextLine();
-                if (answerSave.equals("y")) {
-                    String query2 =  "insert into FolderPatient (FolderNumber,PatientId,TypeOfArrangement,TotalAmount,TotalAmountReimbursement) values ('" + folderCode + "'," + patientId + ",'" + typeOfArrangement + "'," + totalAmountOfFolder + "," + totalAmountReimbursed + ")";
-                    Boolean isInsertedTow = Folder.save(query2);
-                    if (isInsertedTow)
-                        System.out.println("Folder added successfully");
-                    else
-                        System.out.println("Folder not added");
-                } else
-                    System.out.println("Folder not saved");
             }
 
             //folder.addMedicament();
