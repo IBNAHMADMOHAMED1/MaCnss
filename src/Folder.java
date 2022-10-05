@@ -86,25 +86,53 @@ public class Folder {
 
                 totalAmountReimbursed +=  totalAmountOfMedicamentsReimbursed;
                // update
-                String queryUpdate = "update FolderPatient set TotalAmountReimbursement = " + totalAmountReimbursed + " where FolderNumber = '" + folderCode + "'";
-                Boolean isUpdated = Folder.update(queryUpdate);
+                Boolean isUpdated = updateTotalAmountReimbursed(folderCode);
                 if (isUpdated)
                     System.out.println("Folder updated successfully");
                 else
                     System.out.println("Folder not updated");
+                // ask to if hava analysis
+                System.out.println("Do you have analysis? (y/n)");
+                String answerAnalysis = scanner.next();
+                if (answerAnalysis.equals("y")) {
+                    // add analysis
+                    analyseOpration(folderCode, scanner);
+                    // add radio
+                    radioOpration(folderCode);
+                }
+                else{
+                    radioOpration(folderCode);
+                }
+
 
             }
-
-            //folder.addMedicament();
-            ///folder.addAnalysis();
-           // folder.addRadio();
-           // folder.calculateTotalAmount();
-           // folder.calculateTotalAmountReimbursed();
-           // folder.save();
         }
 
 
     }
+
+    private static void analyseOpration(String folderCode, Scanner scanner) {
+        System.out.println("Enter the total amount of analysis");
+        Double totalAmountOfAnalysis = scanner.nextDouble();
+        System.out.println("Total Amount of Analysis: " + totalAmountOfAnalysis);
+
+        Double totalAmountOfAnalysisReimbursed = Analysis.getAmountReimbursed(totalAmountOfAnalysis);
+        System.out.println("Total Amount of Analysis Reimbursed: " + totalAmountOfAnalysisReimbursed);
+        totalAmountReimbursed += totalAmountOfAnalysisReimbursed;
+        // update
+        Boolean isUpdatedAnalysis = updateTotalAmountReimbursed(folderCode);
+        if (isUpdatedAnalysis)
+            System.out.println("Folder updated successfully");
+        else
+            System.out.println("Folder not updated");
+    }
+
+    private static Boolean updateTotalAmountReimbursed(String folderCode) {
+        String queryUpdate = "update FolderPatient set TotalAmountReimbursement = " + totalAmountReimbursed + " where FolderNumber = '" + folderCode + "'";
+        Boolean isUpdated = Folder.update(queryUpdate);
+        return isUpdated;
+    }
+
     // getTotalAmountOfFolder
     public static int getTotalAmountOfFolder() {
         int totalAmountOfFolder = 0;
@@ -283,6 +311,9 @@ public class Folder {
             System.out.println("Folder not found");
             validateFolder();
         }
+        System.out.println("Details of the folder");
+        System.out.println("Folder code: " + folderCode);
+        System.out.println("Total amount Reimbursed: " + checkFolderExist(folderCode,"TotalAmountReimbursed"));
 
     }
 
@@ -359,4 +390,28 @@ public class Folder {
         System.out.println(resultSet.getString("CreatedAt"));
         System.out.println(resultSet.getString("FolderStatus"));
     }
+
+    public static void radioOpration(String folderCode)
+    {
+        // ask if have radio
+        System.out.println("Do you have radio? (y/n)");
+        Scanner scanner = new Scanner(System.in);
+        String choice = scanner.nextLine();
+        // add radio
+        System.out.println("Enter the total amount of radio");
+        Double totalAmountOfRadio = scanner.nextDouble();
+        System.out.println("Total Amount of Radio: " + totalAmountOfRadio);
+
+        Double totalAmountOfRadioReimbursed = Radio.getAmountReimbursed(totalAmountOfRadio);
+        System.out.println("Total Amount of Radio Reimbursed: " + totalAmountOfRadioReimbursed);
+        totalAmountReimbursed += totalAmountOfRadioReimbursed;
+        // update
+        Boolean isUpdatedRadio = updateTotalAmountReimbursed(folderCode);
+        if (isUpdatedRadio)
+            System.out.println("Folder updated successfully");
+        else
+            System.out.println("Folder not updated");
+
+    }
+
 }
